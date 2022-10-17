@@ -814,8 +814,8 @@ def main():
     s3_resource = createSessionResources(session, 's3', REGION)
     create_new_S3(s3_client, SOURCE_BUCKET, REGION)
     
-    upload_multiple_files_toS3Folder(s3_client, 'source_namesbystate/', '*.TXT', SOURCE_BUCKET, 'SOURCE/')
-    upload_multiple_files_toS3Folder(s3_client, 'source_weather/', '*.txt', SOURCE_BUCKET, 'SOURCE/')
+    upload_multiple_files_toS3Folder(s3_client, 'source_namesbystate/', '*.txt', SOURCE_BUCKET, 'SOURCE/')
+#     upload_multiple_files_toS3Folder(s3_client, 'source_weather/', '*.txt', SOURCE_BUCKET, 'SOURCE/')
     upload_multiple_files_toS3Folder(s3_client, 'source_weather/', '*.csv', SOURCE_BUCKET, 'SOURCE/')
     upload_multiple_files_toS3Folder(s3_client, 'source_states/', '*.json', SOURCE_BUCKET, 'SOURCE/')
     
