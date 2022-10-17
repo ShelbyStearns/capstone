@@ -485,7 +485,7 @@ def process_babyName_fact(spark):
 
     # write to s3 as csv
     babyNames_byState_fact.write.mode("overwrite") \
-                     .csv('s3a://capstonesources/OUTPUT/babyNames_byState_fact/babyNames_byState_fact.parquet')
+                     .csv('s3a://capstonesources/OUTPUT/babyNames_byState_fact/babyNames_byState_fact.csv')
     
 
 def process_stormsByName_dim(spark):
