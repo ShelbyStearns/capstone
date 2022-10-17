@@ -185,7 +185,7 @@ A dashboard would be lovely. Updating daily, is a terrible idea.
 #### 3. The database needed to be accessed by 100+ people.
 The final capstone solution outputs the data into an S3 bucket, not a database. Database access must be managed by the social scientists.
 
-To entertain the question based on theory... Redshift, had, we used it, would likely struggle with concurrent execution, if multiple simultaneous users execute queries. Hopefully, <br> the 100+ users would not be querying simultaneously. 
+To entertain the question based on theory... <br> Redshift, had, we used it, would likely struggle with concurrent execution, if multiple simultaneous users execute queries. Hopefully, the 100+ users would not be querying simultaneously. 
 
 Management of these users within Redshift or via IAM would requirement additional process and management of the pipeline.
 For this reason, I like depositing data in S3 and allowing users to read the data into a database of their choice. 
@@ -223,7 +223,7 @@ was imported into my Spark session along with my other data sources.
 
 A few final data transformations, on all data sources, were done using Pyspark - 
 to demonstrate some aptitude with Pyspark - before building 
-the schema tables and writing to S3. This proved successful but <br> the rework was considerable. 
+the schema tables and writing to S3. This proved successful but the rework was considerable. 
 
-In retrospect, as previously mentioned, I would have utilized <br> Redshift instead of Spark. The datasets are NOT changing rapidly. <br>
-Both datasets are updated annually. Granted, there will be <br> hundreds of additional records but a real-time <br> solution on relatively small datasets was overkill. 
+In retrospect, as previously mentioned, I would have utilized Redshift instead of Spark. The datasets are NOT changing rapidly.
+Both datasets are updated annually. Granted, there will be hundreds of additional records but a real-time solution on relatively small datasets was overkill. 
