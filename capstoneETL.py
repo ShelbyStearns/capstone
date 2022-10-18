@@ -137,13 +137,16 @@ def create_spark_session():
     return spark
       
         
-def readStateData():
+def readStateData(spark):
     """
     A helper function created to read json state data from a \
     newly created s3 bucket apply data transformations and\
     output the data as a Pyspark dataframe.
+    
+    args:
+    spark = spark session parameter
     """
-    spark = create_spark_session()
+#     spark = create_spark_session()
     spark.conf.set("spark.sql.legacy.json.allowEmptyString.enabled", True)
     
     # read state data
@@ -174,14 +177,17 @@ def readStateData():
     return state_data
 
 
-def readBabyNameData():
+def readBabyNameData(spark):
     """
     A helper function created to read baby name data in \
     50 separate text files from a newly created s3 \
     bucket apply data transformations and
     output the data as a Pyspark dataframe.
+    
+    args:
+    spark = spark session parameter
     """
-    spark = create_spark_session()
+#     spark = create_spark_session()
 
     # read baby name data
     namesbystate = spark.read \
@@ -279,14 +285,18 @@ def readBabyNameData():
     return namesbystate
 
 
-def readStormData():
+def readStormData(spark):
     """
     A helper function created to read baby name data in \
     50 separate text files from a newly created s3 \
     bucket apply data transformations and
     output the data as a Pyspark dataframe.
+    
+    args:
+    spark = spark session parameter
     """
-    spark = create_spark_session()
+    
+#     spark = create_spark_session()
 
     # read storm data
     fromStormsCSV = spark.read \
@@ -381,7 +391,7 @@ def process_saffir_simpson_hurricane_wind_scale_ref(spark):
     spark = spark session parameters
     """
 
-    spark = create_spark_session()
+#     spark = create_spark_session()
     
     data = [{'category': 1, 
              'sustained_wind(kt)': '64-82', 
@@ -439,8 +449,6 @@ def process_saffir_simpson_hurricane_wind_scale_ref(spark):
     saffir_simpson_scale = spark.createDataFrame(data, schema)
 #     print(saffir_simpson_scale.printSchema)
     saffir_simpson_scale.na.fill(value=0).show()   
-    
-    return saffir_simpson_scale
         
     # write to s3 as csv
     saffir_simpson_scale.write.mode("overwrite") \
