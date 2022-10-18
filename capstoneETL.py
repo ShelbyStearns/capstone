@@ -469,7 +469,7 @@ def process_state_ref(spark):
     """
     
     # call helper
-    state_ref = readStateData()
+    state_ref = readStateData(spark)
 
     # write to s3 as csv
     state_ref.write.mode("overwrite") \
@@ -510,7 +510,7 @@ def process_stormsByName_dim(spark):
     """
     
     # call helper
-    storms_byName_dim = readStormData()  
+    storms_byName_dim = readStormData(spark)  
     
     # write to s3 as csv
     storms_byName_dim.write.mode("overwrite") \
@@ -531,7 +531,7 @@ def process_stormsLocation_dim(spark):
     """
     
     # call helper
-    storms_location_dim = readStormData()  
+    storms_location_dim = readStormData(spark)  
     
     # select named storm that have storm_state_codes
     storms_location_dim = namedStorms \
@@ -593,7 +593,7 @@ def process_stormsSeverity_dim(spark):
     """
     
     # call helper
-    storms_severity_dim = readStormData() 
+    storms_severity_dim = readStormData(spark) 
     
     # select named storms with catergories
     storms_severity_dim = namedStorms \
@@ -654,7 +654,7 @@ def process_stormsMetadata_fact(spark):
     """
     
     # call helper
-    storms_metadata_fact = readStormData()  
+    storms_metadata_fact = readStormData(spark)  
     
     # groupby category
     storms_metadata_fact = storms_metadata_fact \
@@ -709,7 +709,7 @@ def process_stormsBabyNames_fact(spark):
     """
     
     # call helper
-    storms_babyNames_fact = readStormData()  
+    storms_babyNames_fact = readStormData(spark)  
     
     # join storms metadata fact table to baby names fact
     meta = storms_metadata_fact \
